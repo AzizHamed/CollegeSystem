@@ -27,10 +27,36 @@ public class StudentController {
         return studentService.getStudentByFirstNameLastName(firstName,lastName);
     }
 
-    @GetMapping("department")
+    @GetMapping("/department")
     public List<Student> findStudentByDepartment(@RequestParam Department department){
         return studentService.findByDepartment(department);
     }
+
+    @PutMapping("/register")
+    public String registerToCourseSemester(@RequestParam String studentId, @RequestParam String courseId){
+        return studentService.registerToCourseSemester(studentId,courseId);
+    }
+
+    @PutMapping("/deleteRegistration")
+    public String deleteRegistrationToCourseSemester(String studentId,String courseId){
+        return studentService.deleteRegistrationToCourseSemester(studentId,courseId);
+    }
+
+    @PutMapping("/enterToWaitingList")
+    public String enterToWaitingList(@RequestParam String studentId, @RequestParam String courseId){
+        return studentService.enterToWaitingList(studentId,courseId);
+    }
+
+    @PutMapping("/exitFromWaitingList")
+    public String exitFromWaitingList(@RequestParam String studentId, @RequestParam String courseId){
+        return studentService.exitFromWaitingList(studentId,courseId);
+    }
+
+    @DeleteMapping()
+    public String deleteStudent(@RequestParam String studentId){
+        return studentService.remove(studentId);
+    }
+
 
 
 }

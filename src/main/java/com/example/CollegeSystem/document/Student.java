@@ -5,6 +5,7 @@ import com.example.CollegeSystem.embaddables.Address;
 import com.example.CollegeSystem.enums.Department;
 import com.example.CollegeSystem.enums.Gender;
 import com.example.CollegeSystem.enums.Nationality;
+import com.example.CollegeSystem.serializer.StudentGradeHashMap;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,12 +14,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.NonNull;
 
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 @Document
 @Data
 @AllArgsConstructor
+@NoArgsConstructor(force = true)
 @Builder
 public class Student {
     @Id
@@ -43,6 +44,9 @@ public class Student {
     private Date enrollmentDate;
 
     private Department department;
+
+    private Set<StudentGradeHashMap> studentGradeHashMapSet = new HashSet<>();
+
 
     @Override
     public boolean equals(Object o) {
